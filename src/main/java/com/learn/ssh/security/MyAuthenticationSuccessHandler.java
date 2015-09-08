@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 /**
- * 登录成功后的跳转处理器
+ * 自定义录成功后的跳转处理器
  * @author 作者： zhanghaiwei
  * @version 1.0
  * @date 创建时间：2015/9/8 17:32

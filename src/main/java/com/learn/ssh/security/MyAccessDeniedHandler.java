@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * 自定义403处理器
  * @author 作者： zhanghaiwei
  * @version 1.0
  * @date 创建时间：2015/9/8 18:35

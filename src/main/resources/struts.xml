@@ -30,9 +30,6 @@
         <action name="login" class="com.learn.ssh.action.index.IndexAction">
             <result name="success" type="dispatcher">/WEB-INF/jsp/login.jsp</result>
         </action>
-        <action name="deny403" class="com.learn.ssh.action.index.IndexAction">
-            <result name="success" type="dispatcher">/WEB-INF/jsp/deny403.jsp</result>
-        </action>
     </package>
 
     <include file="struts/struts-admin.xml"/>
