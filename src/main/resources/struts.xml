@@ -30,9 +30,6 @@
         <action name="login" class="com.learn.ssh.action.index.IndexAction">
             <result name="success" type="dispatcher">/WEB-INF/jsp/login.jsp</result>
         </action>
-        <action name="loginRedirect" class="com.learn.ssh.action.index.AuthorityAction" method="index">
-            <result name="success" type="dispatcher">/WEB-INF/jsp/redirect.jsp</result>
-        </action>
     </package>
 
     <include file="struts/struts-admin.xml"/>

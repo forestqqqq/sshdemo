@@ -15,10 +15,12 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     <http >
 
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"></intercept-url>
+        <intercept-url pattern="/user/**" access="hasRole('ROLE_USER')"></intercept-url>
 
         <form-login
                 login-page="/login.do"
-                default-target-url="/loginRedirect.do"
+
+                authentication-success-handler-ref="authenticationSuccessHandler"
                 />
 
         <session-management
@@ -44,7 +46,16 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 			FROM user u inner join authority a
 			on u.username=a.username WHERE u.username=? " />
         </authentication-provider>
+        <authentication-provider>
+            <user-service>
+                <user name="user" authorities="ROLE_USER" password="user"/>
+            </user-service>
+        </authentication-provider>
     </authentication-manager>
+
+    <!-- 登录成功后处理跳转的处理器 -->
+    <beans:bean id="authenticationSuccessHandler"
+                class="com.learn.ssh.security.MyAuthenticationSuccessHandler"/>
 
 
 </beans:beans>

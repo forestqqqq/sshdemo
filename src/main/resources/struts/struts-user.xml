@@ -6,7 +6,7 @@
 
     <package name="user" namespace="/user" extends="struts-default">
         <action name="index" class="com.learn.ssh.action.user.IndexAction">
-            <result name="success" type="dispatcher">/WEB-INF/jsp/admin/index.jsp</result>
+            <result name="success" type="dispatcher">/WEB-INF/jsp/user/index.jsp</result>
         </action>
     </package>
 
