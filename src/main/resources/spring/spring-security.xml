@@ -9,8 +9,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     <global-method-security pre-post-annotations="enabled">
     </global-method-security>
     <!-- 该路径下的资源不用过滤 -->
-    <http pattern="/index.do" security="none" />
-    <http pattern="/loginRedirect.do" security="none" />
+    <http pattern="/*.do" security="none" />
 
     <http >
 
@@ -19,7 +18,6 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 
         <form-login
                 login-page="/login.do"
-
                 authentication-success-handler-ref="authenticationSuccessHandler"
                 />
 
@@ -28,6 +26,8 @@ http://www.springframework.org/schema/security/spring-security.xsd">
             <concurrency-control error-if-maximum-exceeded="false"
                                  expired-url="/login.do?error=session" max-sessions="1"/>
         </session-management>
+
+        <access-denied-handler ref="accessDeniedHandler"></access-denied-handler>
 
         <logout
                 logout-url="/logout.do"
@@ -56,6 +56,11 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     <!-- 登录成功后处理跳转的处理器 -->
     <beans:bean id="authenticationSuccessHandler"
                 class="com.learn.ssh.security.MyAuthenticationSuccessHandler"/>
+
+    <!-- 无权限访问403错误 -->
+    <beans:bean id="accessDeniedHandler" class="com.learn.ssh.security.MyAccessDeniedHandler">
+        <beans:property name="errorPage" value="/login.do?error=deny403"></beans:property>
+    </beans:bean>
 
 
 </beans:beans>

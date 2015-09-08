@@ -19,4 +19,8 @@ public class IndexAction extends BaseAction {
 
         return SUCCESS;
     }
+
+    public String deny403(){
+        return SUCCESS;
+    }
 }
