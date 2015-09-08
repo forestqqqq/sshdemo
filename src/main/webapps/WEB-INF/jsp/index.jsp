@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>sshdemo首页</title>
+<title>网站首页</title>
 </head>
 <body>
-sshdemo首页!
+网站首页!
 </body>
 </html>

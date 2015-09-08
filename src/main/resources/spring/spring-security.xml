@@ -9,28 +9,28 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     <global-method-security pre-post-annotations="enabled">
     </global-method-security>
     <!-- 该路径下的资源不用过滤 -->
-    <http pattern="/login.html" security="none" />
-    <http pattern="/logout" security="none" />
+    <http pattern="/index.do" security="none" />
+    <http pattern="/loginRedirect.do" security="none" />
 
     <http >
 
-        <intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"></intercept-url>
 
         <form-login
-                login-page="/login.html"
-                default-target-url="/users.html"
+                login-page="/login.do"
+                default-target-url="/loginRedirect.do"
                 />
 
         <session-management
                 session-fixation-protection="none">
             <concurrency-control error-if-maximum-exceeded="false"
-                                 expired-url="/login.html?error=session" max-sessions="1"/>
+                                 expired-url="/login.do?error=session" max-sessions="1"/>
         </session-management>
 
         <logout
-                logout-url="/logout.html"
+                logout-url="/logout.do"
                 invalidate-session="true"
-                logout-success-url="/login.html?error=logout" />
+                logout-success-url="/login.do?error=logout" />
 
         <csrf disabled="true" />
     </http>

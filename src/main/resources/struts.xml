@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+    <!--指定Web应用的默认编码集，相当于调用HttpServletRequest的setCharacterEncoding方法-->
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+
+    <!--该属性指定需要Struts 2处理的请求后缀，该属性的默认值是action，即所有匹配*.action的请求都由Struts 2处理。
+    如果用户需要指定多个请求后缀，则多个后缀之间以英文逗号（，）隔开。-->
+    <constant name="struts.action.extension" value="do"/>
+
+    <!--设置浏览器是否缓存静态内容，默认值为true，开发阶段最好false-->
+    <constant name="struts.serve.static.browserCache " value="false"/>
+
+    <!--当struts的配置文件修改后，系统是否自动重新加载该文件，默认值为false，开发阶段最好true-->
+    <constant name="struts.configuration.xml.reload" value="true"/>
+
+    <!--开发模式下设为true，这样可以打印出更详细的错误信息-->
+    <constant name="struts.devMode" value="true"/>
+
+    <!--该属性指定Struts 2应用所需要的国际化资源文件，如果有多份国际化资源文件，则多个资源文件的文件名以英文逗号（,）隔开。-->
+    <constant name="struts.custom.i18n.resources" value=""/>
+
+    <package name="index" namespace="/" extends="struts-default">
+        <action name="index" class="com.learn.ssh.action.index.IndexAction">
+            <result name="success" type="dispatcher">/WEB-INF/jsp/index.jsp</result>
+        </action>
+        <action name="login" class="com.learn.ssh.action.index.IndexAction">
+            <result name="success" type="dispatcher">/WEB-INF/jsp/login.jsp</result>
+        </action>
+        <action name="loginRedirect" class="com.learn.ssh.action.index.AuthorityAction" method="index">
+            <result name="success" type="dispatcher">/WEB-INF/jsp/redirect.jsp</result>
+        </action>
+    </package>
+
+    <include file="struts/struts-admin.xml"/>
+    <include file="struts/struts-user.xml"/>
+
+
+</struts>

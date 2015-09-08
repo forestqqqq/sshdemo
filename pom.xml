@@ -17,6 +17,9 @@
         <!-- log4j日志文件管理包版本 -->
         <slf4j.version>1.7.7</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
+
+        <struts2.version>2.3.24</struts2.version>
+        <hibernate.version>4.3.11.Final</hibernate.version>
     </properties>
 
 
@@ -65,7 +68,6 @@
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
-            <scope>provided</scope>
         </dependency>
 
 
@@ -349,13 +351,124 @@
             <version>${slf4j.version}</version>
         </dependency>
 
+        <!-- struts2 -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-spring-plugin</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-json-plugin</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-osgi-plugin</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>-->
+        <!--<dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-jsf-plugin</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-rest-plugin</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.20.0-GA</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>6.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.osgi</groupId>
+            <artifactId>spring-osgi-core</artifactId>
+            <version>1.2.1</version>
+        </dependency>-->
+
+
+        <!-- struts2 test -->
+        <dependency>
+            <groupId>com.googlecode.struts2-conversation</groupId>
+            <artifactId>struts2-junit4-plugin</artifactId>
+            <version>1.7.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-testng-plugin</artifactId>
+            <version>${struts2.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!--
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-hibernate</artifactId>
+            <version>1.2.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-testing</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <version>3.5.6-Final</version>
+        </dependency>
+        -->
+
+        <!-- hibernate test -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator-test-utils</artifactId>
+            <version>5.2.1.Final</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
 
     <repositories>
         <repository>
             <id>mvnrepository</id>
-            <url>http://mvnrepository.com/artifact/</url>
+            <url>http://www.mvnrepository.com/artifact/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
@@ -378,7 +491,7 @@
     <pluginRepositories>
         <pluginRepository>
             <id>mvnrepository</id>
-            <url>http://mvnrepository.com/artifact/</url>
+            <url>http://www.mvnrepository.com/artifact/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -424,12 +537,16 @@
         <resources>
             <resource>
                 <directory>src/main/java</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <excludes>
-                    <exclude>local/*</exclude>
-                    <exclude>remote/*</exclude>
+                    <exclude>local/**</exclude>
+                    <exclude>remote/**</exclude>
                 </excludes>
             </resource>
             <resource>
@@ -450,6 +567,12 @@
                 <version>2.4</version>
                 <configuration>
                     <includeEmptyDirectories>true</includeEmptyDirectories>
+                    <webXml>src/main/webapps/WEB-INF/web.xml</webXml>
+                    <webResources>
+                        <resource>
+                            <directory>src/main/webapps</directory>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
         </plugins>
