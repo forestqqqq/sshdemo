@@ -21,11 +21,25 @@
 
 
     <dependencies>
+        <!--junit单元测试-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
+        </dependency>
+        <!-- spring test包 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-core</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- tomcat组件 -->
@@ -55,7 +69,7 @@
         </dependency>
 
 
-
+        <!-- spring组件 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -285,18 +299,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- spring test包 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-core</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+
 
         <!-- json解析net.sf库 -->
         <dependency>
@@ -307,18 +310,6 @@
         </dependency>
 
 
-        <!-- spring整合mybatis -->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.3.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>1.2.3</version>
-        </dependency>
 
         <!-- 数据库连接池 -->
         <dependency>
@@ -334,12 +325,6 @@
             <version>5.1.36</version>
         </dependency>
 
-        <dependency>
-            <groupId>xstream</groupId>
-            <artifactId>xstream</artifactId>
-            <version>1.2.2</version>
-        </dependency>
-
         <!-- 文件上传 -->
         <dependency>
             <groupId>commons-fileupload</groupId>
@@ -348,7 +333,6 @@
         </dependency>
 
         <!-- 日志文件管理包 -->
-        <!-- log start -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -364,9 +348,6 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-
-
-
 
 
     </dependencies>
