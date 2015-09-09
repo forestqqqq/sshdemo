@@ -23,7 +23,15 @@
     <!--该属性指定Struts 2应用所需要的国际化资源文件，如果有多份国际化资源文件，则多个资源文件的文件名以英文逗号（,）隔开。-->
     <constant name="struts.custom.i18n.resources" value=""/>
 
-    <package name="index" namespace="/" extends="struts-default">
+    <package name="sshdemo-default" extends="struts-default">
+        <!-- 配置404页面 -->
+        <action name="*">
+            <result type="dispatcher">404.jsp</result>
+        </action>
+    </package>
+
+
+    <package name="index" namespace="/" extends="sshdemo-default">
         <action name="index" class="com.learn.ssh.action.index.IndexAction">
             <result name="success" type="dispatcher">/WEB-INF/jsp/index.jsp</result>
         </action>

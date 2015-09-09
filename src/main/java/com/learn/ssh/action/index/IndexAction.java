@@ -24,7 +24,7 @@ public class IndexAction extends BaseAction {
      * 登录页面
      * @return
      */
-    public String login(){
+    public String login() {
 
         return SUCCESS;
     }

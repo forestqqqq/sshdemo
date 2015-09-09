@@ -4,7 +4,7 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
-    <package name="admin" namespace="/admin" extends="struts-default">
+    <package name="admin" namespace="/admin" extends="sshdemo-default">
         <action name="index" class="com.learn.ssh.action.admin.IndexAction">
             <result name="success" type="dispatcher">/WEB-INF/jsp/admin/index.jsp</result>
         </action>

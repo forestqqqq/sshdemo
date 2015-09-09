@@ -78,6 +78,12 @@
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
 
+	<!--配置404页面-->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.jsp</location>
+	</error-page>
+
 
 	<welcome-file-list>
 		<welcome-file>index.do</welcome-file>
