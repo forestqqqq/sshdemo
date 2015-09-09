@@ -23,11 +23,30 @@
     <!--该属性指定Struts 2应用所需要的国际化资源文件，如果有多份国际化资源文件，则多个资源文件的文件名以英文逗号（,）隔开。-->
     <constant name="struts.custom.i18n.resources" value=""/>
 
-    <package name="sshdemo-default" extends="struts-default">
-        <!-- 配置404页面 -->
-        <action name="*">
-            <result type="dispatcher">404.jsp</result>
-        </action>
+    <package name="sshdemo-default" namespace="" extends="struts-default">
+        <interceptors>
+            <!-- 访问日志拦截器 -->
+            <interceptor name="accessLogInterceptor" class="com.learn.ssh.interceptor.AccessLogInterceptor"/>
+            <!-- 异常拦截器 -->
+            <interceptor name="exceptionInterceptor" class="com.learn.ssh.interceptor.ExceptionInterceptor" />
+
+
+            <!-- 定义默认的拦截器栈 -->
+            <interceptor-stack name="sshdemoDefaultStack">
+                <interceptor-ref name="exceptionInterceptor" />
+                <interceptor-ref name="accessLogInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+
+        </interceptors>
+
+        <!-- 启用默认的拦截器栈 -->
+        <default-interceptor-ref name="sshdemoDefaultStack"/>
+
+        <global-results>
+            <result name="exception">/WEB-INF/jsp/exception.jsp</result>
+        </global-results>
+
     </package>
 
 
@@ -40,8 +59,8 @@
         </action>
     </package>
 
-    <include file="struts/struts-admin.xml"/>
-    <include file="struts/struts-user.xml"/>
-
-
+    <!-- 管理员模块 -->
+    <include file="struts2/struts-admin.xml" />
+    <!-- 用户模块 -->
+    <include file="struts2/struts-user.xml" />
 </struts>

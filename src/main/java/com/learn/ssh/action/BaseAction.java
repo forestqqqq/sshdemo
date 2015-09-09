@@ -24,6 +24,13 @@ public class BaseAction extends ActionSupport
     protected HttpServletResponse response;
     protected Map<String, Object> session;
 
+    public HttpServletResponse getResponse() {
+        return response;
+    }
+
+    public HttpServletRequest getRequest() {
+        return request;
+    }
 
     @Override
     public void setServletRequest(HttpServletRequest request) {
