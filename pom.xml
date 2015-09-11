@@ -420,7 +420,7 @@
         </dependency>
 
 
-        <!--
+        <!-- hibernate -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-hibernate</artifactId>
@@ -452,7 +452,6 @@
             <artifactId>hibernate-annotations</artifactId>
             <version>3.5.6-Final</version>
         </dependency>
-        -->
 
         <!-- hibernate test -->
         <dependency>
@@ -462,6 +461,13 @@
             <scope>test</scope>
         </dependency>
 
+
+        <!-- c3p0 -->
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.5.1</version>
+        </dependency>
 
     </dependencies>
 

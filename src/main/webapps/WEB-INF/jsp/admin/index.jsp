@@ -10,5 +10,7 @@
 <body>
 后台首页!<br/>
 <security:authentication property="principal.username"/>
+<br/>
+${user}
 </body>
 </html>
